@@ -5,7 +5,7 @@
 ### 🚀 **About Me**  
 - 🔭 I’m currently working freelance projects.  
 - 🌱 I’m constantly learning and exploring new technologies.  
-- 💬 Ask me about **Angular, React, REST APIs, and Databases**.  
+- 💬 Ask me about **Angular, React,Next js , REST APIs, and Databases**.  
 - 👯 I’m looking to collaborate on **open-source projects and innovative startups**.  
 
 ### 🛠 **Tech Stack & Skills**  

@@ -4,7 +4,7 @@
 💻 **Full-Stack Developer | Passionate About Building Scalable Applications**  
 
 ### 🚀 **About Me**  
-- 🔭 I’m currently working freelance projects.  
+- 🔭 I’m currently working on freelance projects.  
 - 🌱 I’m constantly learning and exploring new technologies.  
 - 💬 Ask me about **Angular, React,Next js , REST APIs, and Databases**.  
 - 👯 I’m looking to collaborate on **open-source projects and innovative startups**.  

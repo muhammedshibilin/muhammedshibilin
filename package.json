@@ -12,6 +12,7 @@
     "@vercel/analytics": "^1.5.0",
     "framer-motion": "^12.23.0",
     "next": "15.3.5",
+    "postcss": "^8.5.6",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },
@@ -19,7 +20,7 @@
     "@eslint/eslintrc": "^3",
     "@tailwindcss/aspect-ratio": "^0.4.2",
     "@tailwindcss/forms": "^0.5.10",
-    "@tailwindcss/postcss": "^4",
+    "@tailwindcss/postcss": "^4.1.11",
     "@tailwindcss/typography": "^0.5.16",
     "@types/node": "^20",
     "@types/react": "^19",
@@ -27,7 +28,7 @@
     "eslint": "^9",
     "eslint-config-next": "15.3.5",
     "tailwind-scrollbar": "^4.0.2",
-    "tailwindcss": "^4",
+    "tailwindcss": "^4.1.11",
     "typescript": "^5"
   }
 }

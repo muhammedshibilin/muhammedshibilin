@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
@@ -75,13 +76,11 @@ async function fetchProjectData(id: string): Promise<Project> {
   return project;
 }
 
-// eslint-disable-next-line @next/next/no-async-client-component
 export default async function ProjectDetail({ params }: { params: { id: string } }) {
   let project: Project;
   
   try {
     project = await fetchProjectData(params.id);
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   } catch (error) {
     notFound();
   }

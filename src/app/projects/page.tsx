@@ -5,7 +5,7 @@ import { motion, Variants } from "framer-motion";
 import { useState } from "react";
 
 interface Project {
-  id: number;
+  id: string;
   title: string;
   description: string;
   tags: string[];
@@ -16,7 +16,7 @@ interface Project {
 
 const projects: Project[] = [
   {
-    id: 1,
+    id: "1",
     title: "E-commerce Platform",
     description: "Full-featured online store with payment integration and admin dashboard",
     tags: ["React", "Node.js", "MongoDB", "Stripe"],

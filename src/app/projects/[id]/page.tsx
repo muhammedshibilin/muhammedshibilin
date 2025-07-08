@@ -208,3 +208,7 @@ export default async function ProjectDetail({ params }: { params: { id: string }
     </section>
   );
 }
+
+
+
+export{}

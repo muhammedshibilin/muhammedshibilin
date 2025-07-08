@@ -1,20 +1,7 @@
 
+import { Project } from '@/types/project.interface';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
-
-export interface Project {
-  id: string;
-  title: string;
-  description: string;
-  detailedDescription: string;
-  technologies: string[];
-  features: string[];
-  challenges: string;
-  solutions: string;
-  images: string[];
-  liveUrl?: string;
-  githubUrl?: string;
-}
 
 async function fetchProjectData(id: string): Promise<Project> {
   await new Promise(resolve => setTimeout(resolve, 1000));
@@ -24,21 +11,16 @@ async function fetchProjectData(id: string): Promise<Project> {
       id: '1',
       title: "E-commerce Platform",
       description: "A comprehensive online store solution with modern features",
-      detailedDescription: "This project involved building a full-featured e-commerce platform from scratch. The system includes product listings, shopping cart functionality, user authentication, and payment processing. It was designed to handle high traffic volumes while maintaining excellent performance.",
+      detailedDescription: "This project involved building a full-featured e-commerce platform from scratch.",
       technologies: ["React", "Next.js", "Node.js", "MongoDB", "Stripe"],
       features: [
         "Product catalog with filters",
-        "Shopping cart with persistent storage",
-        "User authentication system",
-        "Payment processing integration",
-        "Admin dashboard"
+        "Shopping cart functionality",
+        "User authentication system"
       ],
-      challenges: "Implementing real-time inventory updates while maintaining performance during flash sales.",
-      solutions: "Used Redis for caching and implemented optimistic UI updates to handle high traffic scenarios.",
-      images: [
-        "/project1-1.jpg",
-        "/project1-2.jpg"
-      ],
+      challenges: "Implementing real-time inventory updates...",
+      solutions: "Used Redis for caching...",
+      images: ["/project1-1.jpg", "/project1-2.jpg"],
       liveUrl: "https://ecommerce-demo.example.com",
       githubUrl: "https://github.com/example/ecommerce-platform"
     },
@@ -46,34 +28,31 @@ async function fetchProjectData(id: string): Promise<Project> {
       id: '2',
       title: "Social Media Dashboard",
       description: "Analytics platform for social media metrics",
-      detailedDescription: "A dashboard that aggregates metrics from multiple social platforms into a unified interface with customizable reports and real-time updates.",
+      detailedDescription: "A dashboard that aggregates metrics from multiple social platforms...",
       technologies: ["TypeScript", "Next.js", "Chart.js", "Firebase"],
       features: [
         "Multi-platform integration",
-        "Custom report generation",
-        "Real-time data updates",
-        "Team collaboration features"
+        "Custom report generation"
       ],
-      challenges: "Synchronizing data from different APIs with varying rate limits and response formats.",
-      solutions: "Created a unified data layer with caching and implemented a queue system for API requests.",
-      images: [
-        "/project2-1.jpg",
-        "/project2-2.jpg"
-      ],
+      challenges: "Synchronizing data from different APIs...",
+      solutions: "Created a unified data layer...",
+      images: ["/project2-1.jpg", "/project2-2.jpg"],
       liveUrl: "https://social-dashboard.example.com",
       githubUrl: "https://github.com/example/social-dashboard"
     }
   };
 
   const project = projects[id];
-  if (!project) {
-    throw new Error('Project not found');
-  }
-
+  if (!project) throw new Error('Project not found');
   return project;
 }
 
-export default async function ProjectDetail({ params }: { params: { id: string } }) {
+type Props = {
+  params: { id: string }
+  searchParams: { [key: string]: string | string[] | undefined }
+}
+
+export default async function ProjectDetail({ params }: Props) {
   let project: Project;
   
   try {
@@ -120,7 +99,7 @@ export default async function ProjectDetail({ params }: { params: { id: string }
               Key Features
             </h3>
             <ul className="mb-6 space-y-2">
-              {project.features.map((feature, index) => (
+              {project.features!.map((feature, index) => (
                 <li key={index} className="flex items-start">
                   <svg className="h-5 w-5 text-green-500 mr-2 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
@@ -164,7 +143,7 @@ export default async function ProjectDetail({ params }: { params: { id: string }
 
           {/* Project Images */}
           <div className="space-y-6">
-            {project.images.map((image, index) => (
+            {project.images!.map((image, index) => (
               <div key={index} className="relative aspect-video rounded-lg overflow-hidden shadow-lg">
                 <Image
                   src={image}
@@ -211,4 +190,3 @@ export default async function ProjectDetail({ params }: { params: { id: string }
 
 
 
-export{}

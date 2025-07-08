@@ -1,9 +1,8 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 
-interface Project {
+export interface Project {
   id: string;
   title: string;
   description: string;
@@ -18,10 +17,8 @@ interface Project {
 }
 
 async function fetchProjectData(id: string): Promise<Project> {
-  // Simulate API call delay
   await new Promise(resolve => setTimeout(resolve, 1000));
   
-  // In a real app, you would fetch from your API or database
   const projects: Record<string, Project> = {
     '1': {
       id: '1',
@@ -81,7 +78,7 @@ export default async function ProjectDetail({ params }: { params: { id: string }
   
   try {
     project = await fetchProjectData(params.id);
-  } catch (error) {
+  } catch {
     notFound();
   }
 

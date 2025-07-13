@@ -4,14 +4,13 @@ export interface Project {
   description: string;
   detailedDescription?: string;
   technologies: string[];
-  features?: string[];
+  features: string[];
   challenges?: string;
   solutions?: string;
-  images?: string[];
   liveUrl?: string;
   githubUrl?: string;
-  tags?: string[];
   imageUrl?: string;
-  projectUrl?: string;
-  category?: string;
+  role: string[];
+  createdAt?: Date;
+  updatedAt?: Date;
 }

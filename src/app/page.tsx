@@ -66,50 +66,50 @@ export default function Home() {
   }, []);
 
 
-    const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
-    const [message, setMessage] = useState('');
-  
-    const handleSubmit = async (e: React.FormEvent) => {
-      e.preventDefault();
-  
-      interface FormData {
-        name: string;
-        email: string;
-        message: string;
-      }
-  
-      const formData: FormData = {
-        name,
-        email,
-        message,
-      };
-  
-      try {
-        const response = await fetch("https://script.google.com/macros/s/AKfycbwyVQhxbg9rahvgM3Usl6utCn9aYJKT0_9au4BwJqqae6VuBmijBWlhPcvEVWjxXMQTRA/exec", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/x-www-form-urlencoded",
-          },
-          body: new URLSearchParams({
-            name: formData.name,
-            email: formData.email,
-            message: formData.message,
-          }).toString(),
-        });
-  
-        if (response.ok) {
-          alert("Message sent successfully!");
-          setName('');
-          setEmail('');
-          setMessage('');
-        } else {
-          alert("Failed to send message.");
-        }
-      } catch (error) {
-        console.error("Error submitting form", error);
-      }
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [message, setMessage] = useState('');
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    interface FormData {
+      name: string;
+      email: string;
+      message: string;
+    }
+
+    const formData: FormData = {
+      name,
+      email,
+      message,
     };
+
+    try {
+      const response = await fetch("https://script.google.com/macros/s/AKfycbwyVQhxbg9rahvgM3Usl6utCn9aYJKT0_9au4BwJqqae6VuBmijBWlhPcvEVWjxXMQTRA/exec", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+        body: new URLSearchParams({
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+        }).toString(),
+      });
+
+      if (response.ok) {
+        alert("Message sent successfully!");
+        setName('');
+        setEmail('');
+        setMessage('');
+      } else {
+        alert("Failed to send message.");
+      }
+    } catch (error) {
+      console.error("Error submitting form", error);
+    }
+  };
 
 
   return (
@@ -323,40 +323,39 @@ export default function Home() {
               </motion.a>
             </motion.div>
 
-          {/* Tech stack floating icons */}
-<motion.div
-  className="mt-16 flex flex-wrap justify-center gap-6 max-w-2xl mx-auto"
-  initial={{ opacity: 0 }}
-  animate={{ opacity: 1 }}
-  transition={{ delay: 0.8, duration: 1 }}
->
-  {['react', 'nextjs', 'typescript', 'nodejs', 'angular', 'python'].map((tech, i) => (
-    <motion.div
-      key={tech}
-      className="w-16 h-16 bg-gray-800 rounded-xl flex items-center justify-center shadow-lg"
-      whileHover={{ y: -6, scale: 1.1 }}
-      initial={{ y: 20, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{
-        delay: 0.6 + i * 0.1,
-        duration: 0.5,
-        type: 'spring',
-        stiffness: 400,
-        damping: 10
-      }}
-    >
-      <Image
-        src={`/tech/${tech}.svg`}
-        alt={tech}
-        width={36}
-        height={36}
-        className="object-contain"
-      />
-        <span className="text-xs mt-2 text-gray-400">{tech}</span>
+            {/* Tech stack floating icons */}
+            <motion.div
+              className="mt-16 flex flex-wrap justify-center gap-6 max-w-2xl mx-auto"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.8, duration: 1 }}
+            >
+              {['react', 'nextjs', 'typescript', 'nodejs', 'angular', 'python','javascript'].map((tech, i) => (
+                <motion.div
+                  key={tech}
+                  className="w-16 h-16 bg-gray-800 rounded-xl flex items-center justify-center shadow-lg"
+                  whileHover={{ y: -6, scale: 1.1 }}
+                  initial={{ y: 20, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  transition={{
+                    delay: 0.6 + i * 0.1,
+                    duration: 0.5,
+                    type: 'spring',
+                    stiffness: 400,
+                    damping: 10
+                  }}
+                >
+                  <Image
+                    src={`/tech/${tech}.svg`}
+                    alt={tech}
+                    width={36}
+                    height={36}
+                    className="object-contain"
+                  />
 
-    </motion.div>
-  ))}
-</motion.div>
+                </motion.div>
+              ))}
+            </motion.div>
 
           </div>
 

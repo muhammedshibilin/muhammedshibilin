@@ -240,278 +240,244 @@ export default function Home() {
         ref={containerRef}
         className="min-h-screen overflow-x-hidden pt-16 bg-white dark:bg-black transition-colors"
       >
-        {/* Hero Section */}
         <motion.section
-          id="home"
-          style={{ opacity, scale, y }}
-          className="min-h-screen flex flex-col justify-center items-center text-center px-4 sm:px-8 pt-20 relative z-10 overflow-hidden"
-        >
-          {/* --- Background Animations --- */}
-          {/* Animated Gradient Background */}
-          <motion.div
-            className="absolute inset-0 -z-10 overflow-hidden"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1 }}
+  id="home"
+  style={{ opacity, scale, y }}
+  className="min-h-screen flex flex-col justify-center items-center text-center px-4 sm:px-8 pt-16 md:pt-20 relative z-10 overflow-hidden"
+>
+  {/* --- Background Animations --- */}
+  <motion.div
+    className="absolute inset-0 -z-10 overflow-hidden"
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    transition={{ duration: 1 }}
+  >
+    {/* Mobile-optimized gradient background */}
+    <motion.div
+      className="absolute inset-0"
+      animate={{
+        background: [
+          'radial-gradient(circle at 20% 30%, rgba(124, 58, 237, 0.15) 0%, transparent 60%)',
+          'radial-gradient(circle at 80% 70%, rgba(236, 72, 153, 0.15) 0%, transparent 60%)',
+          'radial-gradient(circle at 30% 80%, rgba(139, 92, 246, 0.15) 0%, transparent 60%)',
+          'radial-gradient(circle at 70% 20%, rgba(217, 70, 239, 0.15) 0%, transparent 60%)'
+        ]
+      }}
+      transition={{
+        duration: 20,
+        repeat: Infinity,
+        repeatType: "reverse",
+        ease: "linear"
+      }}
+    />
+
+    {/* Simplified grid pattern for mobile */}
+    <motion.div
+      className="absolute inset-0 opacity-10 dark:opacity-[0.03]"
+      style={{
+        backgroundImage: 'linear-gradient(to right, currentColor 1px, transparent 1px), linear-gradient(to bottom, currentColor 1px, transparent 1px)',
+        backgroundSize: '30px 30px', // Smaller grid for mobile
+      }}
+      animate={{
+        backgroundPosition: ['0% 0%', '100% 100%']
+      }}
+      transition={{
+        duration: 60,
+        repeat: Infinity,
+        ease: "linear"
+      }}
+    />
+  </motion.div>
+
+  {/* --- Main Content --- */}
+  <div className="relative z-10 max-w-6xl mx-auto w-full px-2 sm:px-4">
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, delay: 0.2, type: 'spring' }}
+      className="mb-6 sm:mb-8 px-2 text-center"
+    >
+      {/* Tagline Badge - Mobile optimized */}
+      <motion.div
+        className="mb-4 sm:mb-6 inline-block px-3 py-1 rounded-full bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 backdrop-blur-sm"
+        initial={{ scale: 0.8, opacity: 0 }}
+        animate={{
+          scale: 1,
+          opacity: 1,
+          boxShadow: ['0 0 0 0 rgba(124, 58, 237, 0)', '0 0 0 8px rgba(124, 58, 237, 0.1)', '0 0 0 0 rgba(124, 58, 237, 0)']
+        }}
+        transition={{
+          delay: 0.3,
+          boxShadow: {
+            duration: 2,
+            repeat: Infinity,
+            repeatDelay: 3
+          }
+        }}
+      >
+        <span className="text-xs sm:text-sm text-purple-600 dark:text-purple-400 font-medium tracking-wide">
+          Full Stack Engineer
+        </span>
+      </motion.div>
+
+      {/* Main Headline - Mobile optimized */}
+      <motion.h1
+        style={{ y: textY }}
+        className="text-3xl sm:text-5xl md:text-6xl font-bold mb-4 sm:mb-6 leading-snug sm:leading-tight tracking-tight"
+      >
+        {["Hi, I'm ", "Muhammed Shibili N"].map((text, i) => (
+          <motion.span
+            key={i}
+            initial={{ opacity: 0, y: 10 }} 
+            animate={{ opacity: 1, y: 0 }}
+            transition={{
+              duration: 0.5,
+              delay: 0.4 + i * 0.1
+            }}
+            className={i === 1 ? "bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-pink-600" : ""}
           >
-            {/* Moving Gradient Layer */}
-            <motion.div
-              className="absolute inset-0"
-              animate={{
-                background: [
-                  'radial-gradient(circle at 20% 30%, rgba(124, 58, 237, 0.15) 0%, transparent 40%)',
-                  'radial-gradient(circle at 80% 70%, rgba(236, 72, 153, 0.15) 0%, transparent 40%)',
-                  'radial-gradient(circle at 30% 80%, rgba(139, 92, 246, 0.15) 0%, transparent 40%)',
-                  'radial-gradient(circle at 70% 20%, rgba(217, 70, 239, 0.15) 0%, transparent 40%)'
-                ]
-              }}
-              transition={{
-                duration: 20,
-                repeat: Infinity,
-                repeatType: "reverse",
-                ease: "linear"
-              }}
-            />
-
-            {/* Animated Grid Pattern */}
-            <motion.div
-              className="absolute inset-0 opacity-10 dark:opacity-[0.03]"
-              style={{
-                backgroundImage: 'linear-gradient(to right, currentColor 1px, transparent 1px), linear-gradient(to bottom, currentColor 1px, transparent 1px)',
-                backgroundSize: '40px 40px',
-              }}
-              animate={{
-                backgroundPosition: ['0% 0%', '100% 100%']
-              }}
-              transition={{
-                duration: 60,
-                repeat: Infinity,
-                ease: "linear"
-              }}
-            />
-
-         
-           
-
-            {/* Pulsing Rings */}
-            {/* {[...Array(3)].map((_, i) => (
-              <motion.div
-                key={`ring-${i}`}
-                className="absolute inset-0 m-auto rounded-full border border-purple-400 dark:border-purple-600 pointer-events-none"
-                initial={{
-                  width: '0%',
-                  height: '0%',
-                  opacity: 0
-                }}
-                animate={{
-                  width: ['0%', '150%'],
-                  height: ['0%', '150%'],
-                  opacity: [0.8, 0]
-                }}
+            {text.split("").map((char, j) => (
+              <motion.span
+                key={j}
+                initial={{ opacity: 0, y: 5 }} 
+                animate={{ opacity: 1, y: 0 }}
                 transition={{
-                  duration: 8 + i * 2,
-                  repeat: Infinity,
-                  ease: "easeOut"
+                  duration: 0.3,
+                  delay: 0.4 + i * 0.1 + j * 0.02, 
                 }}
-                style={{
-                  borderWidth: `${1 + i}px`
-                }}
-              />
-            ))} */}
+                whileHover={{ y: -2 }} 
+                className="inline-block"
+              >
+                {char === " " ? "\u00A0" : char}
+              </motion.span>
+            ))}
+          </motion.span>
+        ))}
+      </motion.h1>
+
+      <motion.h2
+        style={{ y: textY }}
+        className="text-base sm:text-xl md:text-2xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto mb-4 sm:mb-6 px-2"
+      >
+        I craft modern, scalable, and engaging digital experiences{" "}
+      </motion.h2>
+    </motion.div>
+
+    {/* Buttons - Mobile optimized */}
+    <motion.div
+      initial={{ opacity: 0, y: 10 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: 0.6, type: 'spring' }}
+      className="flex gap-3 sm:gap-4 justify-center flex-wrap mb-8 sm:mb-10 px-2"
+    >
+      <motion.a
+        href="#work"
+        className="px-4 sm:px-6 py-2 sm:py-3 text-xs sm:text-base bg-gradient-to-r from-purple-500 to-pink-600 rounded-lg text-white font-medium hover:brightness-110 transition-all focus:ring-2 sm:focus:ring-4 ring-purple-300 dark:ring-purple-700 relative overflow-hidden group"
+        initial={{ scale: 0.9 }}
+        animate={{ scale: 1 }}
+        whileHover={{
+          scale: 1.04, 
+          boxShadow: "0 3px 10px rgba(168, 85, 247, 0.3)"
+        }}
+        whileTap={{ scale: 0.96 }}
+      >
+        <motion.span
+          className="relative z-10"
+          initial={{ x: 0 }}
+          whileHover={{ x: 2 }}
+          transition={{ type: 'spring', stiffness: 300 }}
+        >
+          View My Work →
+        </motion.span>
+        <motion.span
+          className="absolute inset-0 bg-gradient-to-r from-purple-600 to-pink-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+          initial={{ x: '-100%' }}
+          whileHover={{ x: '0%' }}
+          transition={{ duration: 0.6 }}
+        />
+      </motion.a>
+
+      <motion.a
+        href="#contact"
+        className="px-4 sm:px-6 py-2 sm:py-3 text-xs sm:text-base border border-gray-300 dark:border-gray-600 rounded-lg text-gray-800 dark:text-white font-medium hover:bg-gray-100 dark:hover:bg-gray-800 focus:ring-1 sm:focus:ring-2 ring-gray-400 dark:ring-gray-700 transition-all relative overflow-hidden group"
+        whileHover={{
+          scale: 1.03, 
+          boxShadow: "0 3px 10px rgba(0, 0, 0, 0.05)"
+        }}
+        whileTap={{ scale: 0.96 }}
+      >
+        <motion.span
+          className="relative z-10"
+          initial={{ x: 0 }}
+          whileHover={{ x: 2 }}
+          transition={{ type: 'spring', stiffness: 300 }}
+        >
+          Contact Me
+        </motion.span>
+        <motion.span
+          className="absolute inset-0 bg-gray-100 dark:bg-gray-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+          initial={{ x: '-100%' }}
+          whileHover={{ x: '0%' }}
+          transition={{ duration: 0.6 }}
+        />
+      </motion.a>
+    </motion.div>
+
+    <motion.div
+      className="mt-2 sm:mt-4 flex flex-wrap justify-center gap-3 sm:gap-5 max-w-4xl mx-auto px-2"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ delay: 0.8, duration: 1 }}
+    >
+      {[
+        'react', 'nextjs', 'typescript', 'nodejs', 'tailwind',
+        'angular', 'python', 'docker', 'graphql', 'javascript'
+      ].map((icon, index) => (
+        <motion.div
+          key={icon}
+          className="relative group"
+          initial={{ y: 10, opacity: 0, scale: 0.8 }} 
+          animate={{ y: 0, opacity: 1, scale: 1 }}
+          transition={{
+            delay: 0.6 + index * 0.1,
+            duration: 0.5,
+            type: 'spring'
+          }}
+          whileHover={{
+            y: -4, 
+            scale: 1.05 
+          }}
+        >
+          <motion.div
+            className="w-10 h-10 sm:w-14 sm:h-14 bg-white dark:bg-gray-800 rounded-lg sm:rounded-xl flex items-center justify-center shadow-sm sm:shadow-md border border-gray-200 dark:border-gray-700 hover:shadow-purple-200 dark:hover:shadow-purple-500/30 transition-all"
+            whileHover={{
+              rotate: [0, 5, -5, 0],
+              transition: {
+                duration: 0.6
+              }
+            }}
+          >
+            <Image
+              src={`/tech/${icon}.svg`}
+              alt={icon}
+              width={24}
+              height={24}
+              className="w-5 h-5 sm:w-7 sm:h-7 object-contain hover:scale-110 transition-transform"
+            />
           </motion.div>
-
-          {/* --- Main Content --- */}
-          <div className="relative z-10 max-w-6xl mx-auto">
-            <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2, type: 'spring' }}
-              className="mb-8 px-4 text-center"
-            >
-              {/* Tagline Badge */}
-              <motion.div
-                className="mb-6 inline-block px-4 py-1 rounded-full bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 backdrop-blur-sm"
-                initial={{ scale: 0.8, opacity: 0 }}
-                animate={{
-                  scale: 1,
-                  opacity: 1,
-                  boxShadow: ['0 0 0 0 rgba(124, 58, 237, 0)', '0 0 0 10px rgba(124, 58, 237, 0.1)', '0 0 0 0 rgba(124, 58, 237, 0)']
-                }}
-                transition={{
-                  delay: 0.3,
-                  boxShadow: {
-                    duration: 2,
-                    repeat: Infinity,
-                    repeatDelay: 3
-                  }
-                }}
-              >
-                <span className="text-sm sm:text-sm text-purple-600 dark:text-purple-400 font-medium tracking-wide">
-                  Full Stack Engineer
-                </span>
-              </motion.div>
-
-              {/* Main Headline */}
-              <motion.h1
-                style={{ y: textY }}
-                className="text-2xl sm:text-5xl md:text-6xl font-bold mb-6 leading-tight tracking-tight"
-              >
-                {["Hi, I'm ", "Muhammed Shibili N"].map((text, i) => (
-                  <motion.span
-                    key={i}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{
-                      duration: 0.5,
-                      delay: 0.4 + i * 0.1
-                    }}
-                    className={i === 1 ? "bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-pink-600" : ""}
-                  >
-                    {text.split("").map((char, j) => (
-                      <motion.span
-                        key={j}
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{
-                          duration: 0.3,
-                          delay: 0.4 + i * 0.1 + j * 0.03
-                        }}
-                        whileHover={{ y: -3 }}
-                        className="inline-block"
-                      >
-                        {char === " " ? "\u00A0" : char}
-                      </motion.span>
-                    ))}
-                  </motion.span>
-                ))}
-              </motion.h1>
-
-              {/* Secondary Tagline */}
-              <motion.h2
-                style={{ y: textY }}
-                className="text-lg sm:text-xl md:text-2xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto mb-6"
-              >
-                I craft modern, scalable, and engaging digital experiences{" "}
-                
-              </motion.h2>
-            </motion.div>
-
-            {/* Buttons */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6, type: 'spring' }}
-              className="flex gap-4 justify-center flex-wrap mb-10"
-            >
-              <motion.a
-                href="#work"
-                className="px-6 py-3 text-sm sm:text-base bg-gradient-to-r from-purple-500 to-pink-600 rounded-lg text-white font-medium hover:brightness-110 transition-all focus:ring-4 ring-purple-300 dark:ring-purple-700 relative overflow-hidden group"
-                initial={{ scale: 0.9 }}
-                animate={{ scale: 1 }}
-                whileHover={{
-                  scale: 1.06,
-                  boxShadow: "0 5px 15px rgba(168, 85, 247, 0.4)"
-                }}
-                whileTap={{ scale: 0.98 }}
-              >
-                <motion.span
-                  className="relative z-10"
-                  initial={{ x: 0 }}
-                  whileHover={{ x: 3 }}
-                  transition={{ type: 'spring', stiffness: 300 }}
-                >
-                  View My Work →
-                </motion.span>
-                <motion.span
-                  className="absolute inset-0 bg-gradient-to-r from-purple-600 to-pink-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                  initial={{ x: '-100%' }}
-                  whileHover={{ x: '0%' }}
-                  transition={{ duration: 0.6 }}
-                />
-              </motion.a>
-
-              <motion.a
-                href="#contact"
-                className="px-6 py-3 text-sm sm:text-base border-2 border-gray-300 dark:border-gray-600 rounded-lg text-gray-800 dark:text-white font-medium hover:bg-gray-100 dark:hover:bg-gray-800 focus:ring-2 ring-gray-400 dark:ring-gray-700 transition-all relative overflow-hidden group"
-                whileHover={{
-                  scale: 1.05,
-                  boxShadow: "0 5px 15px rgba(0, 0, 0, 0.1)"
-                }}
-                whileTap={{ scale: 0.98 }}
-              >
-                <motion.span
-                  className="relative z-10"
-                  initial={{ x: 0 }}
-                  whileHover={{ x: 3 }}
-                  transition={{ type: 'spring', stiffness: 300 }}
-                >
-                  Contact Me
-                </motion.span>
-                <motion.span
-                  className="absolute inset-0 bg-gray-100 dark:bg-gray-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                  initial={{ x: '-100%' }}
-                  whileHover={{ x: '0%' }}
-                  transition={{ duration: 0.6 }}
-                />
-              </motion.a>
-            </motion.div>
-
-            {/* Tech Stack Icons */}
-            <motion.div
-              className="mt-4 flex flex-wrap justify-center gap-5 max-w-4xl mx-auto"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.8, duration: 1 }}
-            >
-              {[
-                'react', 'nextjs', 'typescript', 'nodejs', 'tailwind',
-                'angular', 'python', 'docker', 'graphql', 'javascript'
-              ].map((icon, index) => (
-                <motion.div
-                  key={icon}
-                  className="relative group"
-                  initial={{ y: 20, opacity: 0, scale: 0.8 }}
-                  animate={{ y: 0, opacity: 1, scale: 1 }}
-                  transition={{
-                    delay: 0.6 + index * 0.1,
-                    duration: 0.5,
-                    type: 'spring'
-                  }}
-                  whileHover={{
-                    y: -8,
-                    scale: 1.1
-                  }}
-                >
-                  <motion.div
-                    className="w-14 h-14 bg-white dark:bg-gray-800 rounded-xl flex items-center justify-center shadow-md border border-gray-200 dark:border-gray-700 hover:shadow-purple-200 dark:hover:shadow-purple-500/30 transition-all"
-                    whileHover={{
-                      rotate: [0, 10, -10, 0],
-                      transition: {
-                        duration: 0.6
-                      }
-                    }}
-                  >
-                    <Image
-                      src={`/tech/${icon}.svg`}
-                      alt={icon}
-                      width={30}
-                      height={30}
-                      className="object-contain hover:scale-110 transition-transform"
-                    />
-                  </motion.div>
-                  <motion.div
-                    className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity bg-gray-800 text-white text-xs font-medium px-2 py-1 rounded shadow"
-                    initial={{ scale: 0.8 }}
-                    whileInView={{ scale: 1 }}
-                  >
-                    {icon.charAt(0).toUpperCase() + icon.slice(1)}
-                    <div className="absolute -top-1 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-gray-800 rotate-45"></div>
-                  </motion.div>
-                </motion.div>
-              ))}
-            </motion.div>
-          </div>
-        </motion.section>
+          <motion.div
+            className="absolute -bottom-6 sm:-bottom-8 left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity bg-gray-800 text-white text-[10px] sm:text-xs font-medium px-2 py-1 rounded shadow"
+            initial={{ scale: 0.8 }}
+            whileInView={{ scale: 1 }}
+          >
+            {icon.charAt(0).toUpperCase() + icon.slice(1)}
+            <div className="absolute -top-1 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-gray-800 rotate-45"></div>
+          </motion.div>
+        </motion.div>
+      ))}
+    </motion.div>
+  </div>
+</motion.section>
 
 
         {/* Work Section with Wave Continuation */}

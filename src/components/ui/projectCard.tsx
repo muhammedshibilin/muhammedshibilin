@@ -12,7 +12,6 @@ interface ProjectCardProps {
   className?: string;
 }
 
-// Technology color mapping for better visual distinction
 const getTechColor = (tech: string) => {
   const techColors: { [key: string]: string } = {
     'React': 'bg-blue-100 text-blue-800 border-blue-200',
@@ -31,7 +30,6 @@ const getTechColor = (tech: string) => {
     'Figma': 'bg-purple-100 text-purple-800 border-purple-200',
   };
 
-  // Find partial matches for technologies
   const techName = tech.toLowerCase();
   for (const [key, value] of Object.entries(techColors)) {
     if (techName.includes(key.toLowerCase())) {
@@ -39,7 +37,6 @@ const getTechColor = (tech: string) => {
     }
   }
 
-  // Default gradient colors
   const defaultColors = [
     'bg-indigo-100 text-indigo-800 border-indigo-200',
     'bg-purple-100 text-purple-800 border-purple-200',

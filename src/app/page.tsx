@@ -10,6 +10,7 @@ import { Analytics } from "@vercel/analytics/react";
 import { Project } from "@/types/project.interface";
 import { ProjectCard } from "@/components/ui/projectCard";
 import Link from "next/link";
+import { BsArrowRight, BsMailbox } from "react-icons/bs";
 
 export default function Home() {
   const containerRef = useRef(null);
@@ -238,695 +239,694 @@ export default function Home() {
       {/* Main Content */}
       <div
         ref={containerRef}
-        className="min-h-screen overflow-x-hidden pt-16 bg-white dark:bg-black transition-colors"
+        className="min-h-screen overflow-x-hidden  bg-white dark:bg-black transition-colors"
       >
+
+
         <motion.section
-  id="home"
-  style={{ opacity, scale, y }}
-  className="min-h-screen flex flex-col justify-center items-center text-center px-4 sm:px-8 pt-16 md:pt-20 relative z-10 overflow-hidden"
->
-  {/* --- Background Animations --- */}
-  <motion.div
-    className="absolute inset-0 -z-10 overflow-hidden"
-    initial={{ opacity: 0 }}
-    animate={{ opacity: 1 }}
-    transition={{ duration: 1 }}
-  >
-    {/* Mobile-optimized gradient background */}
-    <motion.div
-      className="absolute inset-0"
-      animate={{
-        background: [
-          'radial-gradient(circle at 20% 30%, rgba(124, 58, 237, 0.15) 0%, transparent 60%)',
-          'radial-gradient(circle at 80% 70%, rgba(236, 72, 153, 0.15) 0%, transparent 60%)',
-          'radial-gradient(circle at 30% 80%, rgba(139, 92, 246, 0.15) 0%, transparent 60%)',
-          'radial-gradient(circle at 70% 20%, rgba(217, 70, 239, 0.15) 0%, transparent 60%)'
-        ]
-      }}
-      transition={{
-        duration: 20,
-        repeat: Infinity,
-        repeatType: "reverse",
-        ease: "linear"
-      }}
-    />
-
-    {/* Simplified grid pattern for mobile */}
-    <motion.div
-      className="absolute inset-0 opacity-10 dark:opacity-[0.03]"
-      style={{
-        backgroundImage: 'linear-gradient(to right, currentColor 1px, transparent 1px), linear-gradient(to bottom, currentColor 1px, transparent 1px)',
-        backgroundSize: '30px 30px', // Smaller grid for mobile
-      }}
-      animate={{
-        backgroundPosition: ['0% 0%', '100% 100%']
-      }}
-      transition={{
-        duration: 60,
-        repeat: Infinity,
-        ease: "linear"
-      }}
-    />
-  </motion.div>
-
-  {/* --- Main Content --- */}
-  <div className="relative z-10 max-w-6xl mx-auto w-full px-2 sm:px-4">
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8, delay: 0.2, type: 'spring' }}
-      className="mb-6 sm:mb-8 px-2 text-center"
-    >
-      {/* Tagline Badge - Mobile optimized */}
-      <motion.div
-        className="mb-4 sm:mb-6 inline-block px-3 py-1 rounded-full bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 backdrop-blur-sm"
-        initial={{ scale: 0.8, opacity: 0 }}
-        animate={{
-          scale: 1,
-          opacity: 1,
-          boxShadow: ['0 0 0 0 rgba(124, 58, 237, 0)', '0 0 0 8px rgba(124, 58, 237, 0.1)', '0 0 0 0 rgba(124, 58, 237, 0)']
-        }}
-        transition={{
-          delay: 0.3,
-          boxShadow: {
-            duration: 2,
-            repeat: Infinity,
-            repeatDelay: 3
-          }
-        }}
-      >
-        <span className="text-xs sm:text-sm text-purple-600 dark:text-purple-400 font-medium tracking-wide">
-          Full Stack Engineer
-        </span>
-      </motion.div>
-
-      {/* Main Headline - Mobile optimized */}
-      <motion.h1
-        style={{ y: textY }}
-        className="text-3xl sm:text-5xl md:text-6xl font-bold mb-4 sm:mb-6 leading-snug sm:leading-tight tracking-tight"
-      >
-        {["Hi, I'm ", "Muhammed Shibili N"].map((text, i) => (
-          <motion.span
-            key={i}
-            initial={{ opacity: 0, y: 10 }} 
-            animate={{ opacity: 1, y: 0 }}
-            transition={{
-              duration: 0.5,
-              delay: 0.4 + i * 0.1
-            }}
-            className={i === 1 ? "bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-pink-600" : ""}
-          >
-            {text.split("").map((char, j) => (
-              <motion.span
-                key={j}
-                initial={{ opacity: 0, y: 5 }} 
-                animate={{ opacity: 1, y: 0 }}
-                transition={{
-                  duration: 0.3,
-                  delay: 0.4 + i * 0.1 + j * 0.02, 
-                }}
-                whileHover={{ y: -2 }} 
-                className="inline-block"
-              >
-                {char === " " ? "\u00A0" : char}
-              </motion.span>
-            ))}
-          </motion.span>
-        ))}
-      </motion.h1>
-
-      <motion.h2
-        style={{ y: textY }}
-        className="text-base sm:text-xl md:text-2xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto mb-4 sm:mb-6 px-2"
-      >
-        I craft modern, scalable, and engaging digital experiences{" "}
-      </motion.h2>
-    </motion.div>
-
-    {/* Buttons - Mobile optimized */}
-    <motion.div
-      initial={{ opacity: 0, y: 10 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: 0.6, type: 'spring' }}
-      className="flex gap-3 sm:gap-4 justify-center flex-wrap mb-8 sm:mb-10 px-2"
-    >
-      <motion.a
-        href="#work"
-        className="px-4 sm:px-6 py-2 sm:py-3 text-xs sm:text-base bg-gradient-to-r from-purple-500 to-pink-600 rounded-lg text-white font-medium hover:brightness-110 transition-all focus:ring-2 sm:focus:ring-4 ring-purple-300 dark:ring-purple-700 relative overflow-hidden group"
-        initial={{ scale: 0.9 }}
-        animate={{ scale: 1 }}
-        whileHover={{
-          scale: 1.04, 
-          boxShadow: "0 3px 10px rgba(168, 85, 247, 0.3)"
-        }}
-        whileTap={{ scale: 0.96 }}
-      >
-        <motion.span
-          className="relative z-10"
-          initial={{ x: 0 }}
-          whileHover={{ x: 2 }}
-          transition={{ type: 'spring', stiffness: 300 }}
+          id="home"
+          style={{ opacity, scale, y }}
+          className="min-h-screen flex flex-col md:flex-row items-center justify-center px-4 sm:px-8 relative z-10 overflow-hidden bg-white dark:bg-gray-900 transition-colors"
         >
-          View My Work →
-        </motion.span>
-        <motion.span
-          className="absolute inset-0 bg-gradient-to-r from-purple-600 to-pink-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-          initial={{ x: '-100%' }}
-          whileHover={{ x: '0%' }}
-          transition={{ duration: 0.6 }}
-        />
-      </motion.a>
-
-      <motion.a
-        href="#contact"
-        className="px-4 sm:px-6 py-2 sm:py-3 text-xs sm:text-base border border-gray-300 dark:border-gray-600 rounded-lg text-gray-800 dark:text-white font-medium hover:bg-gray-100 dark:hover:bg-gray-800 focus:ring-1 sm:focus:ring-2 ring-gray-400 dark:ring-gray-700 transition-all relative overflow-hidden group"
-        whileHover={{
-          scale: 1.03, 
-          boxShadow: "0 3px 10px rgba(0, 0, 0, 0.05)"
-        }}
-        whileTap={{ scale: 0.96 }}
-      >
-        <motion.span
-          className="relative z-10"
-          initial={{ x: 0 }}
-          whileHover={{ x: 2 }}
-          transition={{ type: 'spring', stiffness: 300 }}
-        >
-          Contact Me
-        </motion.span>
-        <motion.span
-          className="absolute inset-0 bg-gray-100 dark:bg-gray-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-          initial={{ x: '-100%' }}
-          whileHover={{ x: '0%' }}
-          transition={{ duration: 0.6 }}
-        />
-      </motion.a>
-    </motion.div>
-
-    <motion.div
-      className="mt-2 sm:mt-4 flex flex-wrap justify-center gap-3 sm:gap-5 max-w-4xl mx-auto px-2"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ delay: 0.8, duration: 1 }}
-    >
-      {[
-        'react', 'nextjs', 'typescript', 'nodejs', 'tailwind',
-        'angular', 'python', 'docker', 'graphql', 'javascript'
-      ].map((icon, index) => (
-        <motion.div
-          key={icon}
-          className="relative group"
-          initial={{ y: 10, opacity: 0, scale: 0.8 }} 
-          animate={{ y: 0, opacity: 1, scale: 1 }}
-          transition={{
-            delay: 0.6 + index * 0.1,
-            duration: 0.5,
-            type: 'spring'
-          }}
-          whileHover={{
-            y: -4, 
-            scale: 1.05 
-          }}
-        >
+          {/* Enhanced Background Animations */}
           <motion.div
-            className="w-10 h-10 sm:w-14 sm:h-14 bg-white dark:bg-gray-800 rounded-lg sm:rounded-xl flex items-center justify-center shadow-sm sm:shadow-md border border-gray-200 dark:border-gray-700 hover:shadow-purple-200 dark:hover:shadow-purple-500/30 transition-all"
-            whileHover={{
-              rotate: [0, 5, -5, 0],
-              transition: {
-                duration: 0.6
-              }
-            }}
+            className="absolute inset-0 -z-10 overflow-hidden"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1 }}
           >
-            <Image
-              src={`/tech/${icon}.svg`}
-              alt={icon}
-              width={24}
-              height={24}
-              className="w-5 h-5 sm:w-7 sm:h-7 object-contain hover:scale-110 transition-transform"
-            />
-          </motion.div>
-          <motion.div
-            className="absolute -bottom-6 sm:-bottom-8 left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity bg-gray-800 text-white text-[10px] sm:text-xs font-medium px-2 py-1 rounded shadow"
-            initial={{ scale: 0.8 }}
-            whileInView={{ scale: 1 }}
-          >
-            {icon.charAt(0).toUpperCase() + icon.slice(1)}
-            <div className="absolute -top-1 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-gray-800 rotate-45"></div>
-          </motion.div>
-        </motion.div>
-      ))}
-    </motion.div>
-  </div>
-</motion.section>
-
-
-        {/* Work Section with Wave Continuation */}
-<section id="work" className="py-28 px-4 sm:px-8 max-w-7xl mx-auto relative overflow-hidden">
-  {/* Enhanced Background Elements with Wave Transition */}
-  <motion.div
-    className="absolute inset-0 -z-10 overflow-hidden pointer-events-none"
-    initial={{ opacity: 0 }}
-    whileInView={{ opacity: 1 }}
-    transition={{ duration: 1 }}
-    viewport={{ once: true }}
-  >
-    {/* Wave Transition from Hero */}
-    <motion.div
-      className="absolute top-0 left-0 right-0 h-32 w-full -translate-y-full"
-      initial={{ y: 0 }}
-      whileInView={{ y: '100%' }}
-      transition={{ duration: 1.5, ease: "easeInOut" }}
-      viewport={{ once: true }}
-    >
-      <svg
-        viewBox="0 0 1200 120"
-        preserveAspectRatio="none"
-        className="w-full h-full"
-      >
-        <path
-          d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z"
-          fill="url(#waveGradient)"
-          className="opacity-70"
-        ></path>
-        <defs>
-          <linearGradient
-            id="waveGradient"
-            x1="0"
-            y1="0"
-            x2="1200"
-            y2="0"
-            gradientUnits="userSpaceOnUse"
-          >
-            <stop offset="0%" stopColor="#8b5cf6" />
-            <stop offset="100%" stopColor="#ec4899" />
-          </linearGradient>
-        </defs>
-      </svg>
-    </motion.div>
-
-    {/* Animated Wave Background */}
-    <motion.div
-      className="absolute inset-0"
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      transition={{ delay: 1, duration: 1 }}
-      viewport={{ once: true }}
-    >
-      {/* Dynamic Wave Pattern */}
-      <motion.svg
-        className="absolute inset-0 w-full h-full opacity-10 dark:opacity-[0.05]"
-        preserveAspectRatio="none"
-        initial={{ y: 0 }}
-        animate={{ y: [0, -20, 0] }}
-        transition={{
-          duration: 15,
-          repeat: Infinity,
-          ease: "easeInOut"
-        }}
-      >
-        <pattern
-          id="wave-pattern"
-          width="120"
-          height="120"
-          patternUnits="userSpaceOnUse"
-        >
-          <path
-            d="M0,60 Q30,90 60,60 T120,60"
-            stroke="currentColor"
-            strokeWidth="1"
-            fill="none"
-          />
-          <path
-            d="M0,120 Q30,90 60,120 T120,120"
-            stroke="currentColor"
-            strokeWidth="1"
-            fill="none"
-          />
-        </pattern>
-        <rect width="100%" height="100%" fill="url(#wave-pattern)" />
-      </motion.svg>
-
-      {/* Secondary Wave Pattern (offset) */}
-      <motion.svg
-        className="absolute inset-0 w-full h-full opacity-5 dark:opacity-[0.03]"
-        preserveAspectRatio="none"
-        initial={{ y: 30 }}
-        animate={{ y: [30, 10, 30] }}
-        transition={{
-          duration: 18,
-          repeat: Infinity,
-          ease: "easeInOut",
-          delay: 3
-        }}
-      >
-        <pattern
-          id="wave-pattern-2"
-          width="120"
-          height="120"
-          patternUnits="userSpaceOnUse"
-        >
-          <path
-            d="M0,80 Q30,110 60,80 T120,80"
-            stroke="currentColor"
-            strokeWidth="1"
-            fill="none"
-          />
-          <path
-            d="M0,140 Q30,110 60,140 T120,140"
-            stroke="currentColor"
-            strokeWidth="1"
-            fill="none"
-          />
-        </pattern>
-        <rect width="100%" height="100%" fill="url(#wave-pattern-2)" />
-      </motion.svg>
-    </motion.div>
-
-    {/* Floating gradient blobs */}
-    {[...Array(6)].map((_, i) => (
-      <motion.div
-        key={i}
-        className={`absolute rounded-full blur-[80px] opacity-30 ${i % 2 === 0
-            ? 'bg-purple-500/30 dark:bg-purple-600/20'
-            : 'bg-pink-500/30 dark:bg-pink-600/20'
-          }`}
-        style={{
-          width: `${100 + Math.random() * 300}px`,
-          height: `${100 + Math.random() * 300}px`,
-          left: `${Math.random() * 100}%`,
-          top: `${Math.random() * 100}%`
-        }}
-        initial={{ scale: 0 }}
-        whileInView={{
-          scale: 1,
-          x: [0, (Math.random() - 0.5) * 200],
-          y: [0, (Math.random() - 0.5) * 200]
-        }}
-        transition={{
-          duration: 20 + Math.random() * 20,
-          repeat: Infinity,
-          repeatType: "reverse",
-          ease: "easeInOut",
-          delay: Math.random() * 2
-        }}
-        viewport={{ once: true }}
-      />
-    ))}
-  </motion.div>
-
-  {/* Section Heading */}
-  <motion.div
-    initial={{ opacity: 0, y: 50 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.6, delay: 0.5 }}
-    viewport={{ once: true, margin: "-100px" }}
-    className="text-center mb-16 relative"
-  >
-    {/* Animated Underline */}
-    <motion.div
-      className="absolute -bottom-4 left-1/2 transform -translate-x-1/2 h-1 w-24"
-      initial={{ scaleX: 0 }}
-      whileInView={{ scaleX: 1 }}
-      transition={{ duration: 1, delay: 0.8, ease: "backOut" }}
-      viewport={{ once: true }}
-    >
-      <svg width="100%" height="100%" viewBox="0 0 100 10" preserveAspectRatio="none">
-        <motion.path
-          d="M0,5 Q25,10 50,5 T100,5"
-          stroke="url(#underlineGradient)"
-          strokeWidth="2"
-          fill="none"
-          initial={{ pathLength: 0 }}
-          animate={{
-            pathLength: [0, 1, 0],
-            d: [
-              'M0,5 Q25,10 50,5 T100,5',
-              'M0,5 Q25,0 50,5 T100,5',
-              'M0,5 Q25,10 50,5 T100,5'
-            ]
-          }}
-          transition={{
-            duration: 4,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-        />
-        <defs>
-          <linearGradient id="underlineGradient" x1="0" y1="0" x2="100%" y2="0">
-            <stop offset="0%" stopColor="#8b5cf6" />
-            <stop offset="100%" stopColor="#ec4899" />
-          </linearGradient>
-        </defs>
-      </svg>
-    </motion.div>
-
-    <motion.h2
-      className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white mb-4"
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ 
-        opacity: 1, 
-        y: 0,
-        textShadow: [
-          '0 0 0px rgba(0,0,0,0)',
-          '0 0 10px rgba(168, 85, 247, 0.3)',
-          '0 0 0px rgba(0,0,0,0)'
-        ]
-      }}
-      transition={{
-        duration: 0.6,
-        delay: 0.3,
-        textShadow: {
-          duration: 3,
-          repeat: Infinity,
-          repeatType: 'reverse'
-        }
-      }}
-      viewport={{ once: true }}
-    >
-      Featured <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-pink-600">Projects</span>
-    </motion.h2>
-
-    <motion.p
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, delay: 0.4 }}
-      viewport={{ once: true }}
-      className="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto"
-    >
-      Each project represents a unique challenge solved with innovative solutions and cutting-edge technologies.
-    </motion.p>
-  </motion.div>
-
-  {/* Projects Grid */}
-  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-    {projects.slice(0, 3).map((project, index) => (
-      <motion.div
-        key={project.id}
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        whileHover={{
-          y: -10,
-          transition: { duration: 0.3 }
-        }}
-        transition={{
-          duration: 0.6,
-          delay: 0.5 + index * 0.1,
-          type: 'spring',
-          stiffness: 100
-        }}
-        viewport={{ once: true, margin: '-50px' }}
-        className="relative group"
-      >
-        {/* Wave Glow effect on hover */}
-        <motion.div
-          className="absolute inset-0 rounded-xl overflow-hidden opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
-          initial={{ scale: 0.9 }}
-          whileHover={{
-            scale: 1,
-            background: [
-              'radial-gradient(circle at 30% 50%, rgba(139, 92, 246, 0.1) 0%, transparent 70%)',
-              'radial-gradient(circle at 70% 50%, rgba(236, 72, 153, 0.1) 0%, transparent 70%)'
-            ]
-          }}
-          transition={{
-            duration: 3,
-            repeat: Infinity,
-            repeatType: "reverse"
-          }}
-        >
-          <div className="absolute -inset-2 bg-gradient-to-r from-purple-500/20 to-pink-600/20 blur-lg"></div>
-        </motion.div>
-
-        <ProjectCard project={project} />
-
-        {/* Tech stack tags with wave animation */}
-        <motion.div
-          className="absolute bottom-4 left-4 flex flex-wrap gap-2"
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.7 + index * 0.1 }}
-          viewport={{ once: true }}
-        >
-          {project.technologies.slice(0, 3).map((tech, techIndex) => (
-            <motion.span
-              key={tech}
-              className="text-xs font-medium px-2 py-1 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-full text-gray-800 dark:text-gray-200 border border-gray-200 dark:border-gray-700"
-              whileHover={{
-                y: [0, -3, 0],
-                transition: {
-                  duration: 0.6,
-                  repeat: Infinity,
-                  repeatType: "loop"
-                }
+            {/* Dynamic Gradient Background */}
+            <motion.div
+              className="absolute inset-0"
+              animate={{
+                background: [
+                  'radial-gradient(circle at 20% 30%, rgba(124, 58, 237, 0.2) 0%, transparent 60%)',
+                  'radial-gradient(circle at 80% 70%, rgba(236, 72, 153, 0.2) 0%, transparent 60%)',
+                  'radial-gradient(circle at 30% 80%, rgba(139, 92, 246, 0.2) 0%, transparent 60%)',
+                  'radial-gradient(circle at 70% 20%, rgba(217, 70, 239, 0.2) 0%, transparent 60%)'
+                ]
               }}
               transition={{
-                delay: 0.8 + index * 0.1 + techIndex * 0.05,
-                y: {
-                  duration: 1.5,
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }
+                duration: 20,
+                repeat: Infinity,
+                repeatType: 'reverse',
+                ease: 'linear'
+              }}
+            />
+          </motion.div>
+
+          {/* Content + Image */}
+          <div className="relative z-10 flex-1 flex flex-col items-center md:items-start px-2 max-w-3xl">
+            {/* Tagline */}
+            <motion.div
+              className="mb-4 sm:mb-6 inline-block px-3 py-1 rounded-full bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 backdrop-blur-sm"
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{
+                scale: 1, opacity: 1,
+                boxShadow: [
+                  '0 0 0 0 rgba(124,58,237,0)',
+                  '0 0 0 8px rgba(124,58,237,0.1)',
+                  '0 0 0 0 rgba(124,58,237,0)'
+                ]
+              }}
+              transition={{
+                delay: 0.3,
+                boxShadow: { duration: 2, repeat: Infinity, repeatDelay: 3 }
               }}
             >
-              {tech}
-            </motion.span>
-          ))}
-        </motion.div>
-      </motion.div>
-    ))}
-  </div>
+              <span className="text-xs sm:text-sm text-purple-600 dark:text-purple-400 font-medium tracking-wide">
+                Full Stack Engineer
+              </span>
+            </motion.div>
 
-  {/* View All Button with wave animation */}
-  <motion.div
-    className="mt-16 text-center"
-    initial={{ opacity: 0, y: 20 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.6, delay: 0.8 }}
-    viewport={{ once: true }}
-  >
-    <Link href="/projects">
-      <motion.div
-        className="inline-flex items-center px-8 py-4 border border-gray-300 dark:border-gray-700 
-      rounded-lg text-gray-800 dark:text-white font-medium 
-      hover:bg-gray-100/50 dark:hover:bg-gray-800/50 transition-all group cursor-pointer relative overflow-hidden"
-        whileHover={{
-          scale: 1.05,
-          boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.1)'
-        }}
-        whileTap={{ scale: 0.98 }}
-      >
-        <span className="relative z-10 flex items-center">
-          View All Projects
-          <motion.svg
-            className="w-5 h-5 ml-3"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            animate={{
-              x: [0, 5, 0],
-              transition: {
-                duration: 1.5,
+            {/* Headline */}
+            <motion.h1
+              style={{ y: textY }}
+              className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 sm:mb-6 leading-tight tracking-tighter text-gray-900 dark:text-white transition-colors"
+            >
+              {["Hi, I'm ", "Muhammed Shibili N"].map((text, i) => (
+                <motion.span
+                  key={i}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.4 + i * 0.1 }}
+                  className={
+                    i === 1
+                      ? "bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-pink-600"
+                      : ""
+                  }
+                >
+                  {text.split('').map((char, j) => (
+                    <motion.span
+                      key={j}
+                      initial={{ opacity: 0, y: 5 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{
+                        duration: 0.3,
+                        delay: 0.4 + i * 0.1 + j * 0.02
+                      }}
+                      whileHover={{ y: -3 }}
+                      className="inline-block"
+                    >
+                      {char === ' ' ? '\u00A0' : char}
+                    </motion.span>
+                  ))}
+                </motion.span>
+              ))}
+            </motion.h1>
+
+            {/* Subheadline */}
+            <motion.h2
+              style={{ y: textY }}
+              className="text-lg sm:text-xl md:text-2xl text-gray-600 dark:text-gray-300 max-w-2xl mb-8 transition-colors"
+            >
+              I craft modern, scalable, and engaging digital experiences.
+            </motion.h2>
+
+            {/* Buttons */}
+            <motion.div
+              className="flex gap-3 sm:gap-4 justify-center md:justify-start flex-wrap mb-8 px-2"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.6, type: 'spring' }}
+            >
+              <motion.a
+                href="#work"
+                className="px-6 py-3 bg-gradient-to-r from-purple-500 to-pink-600 rounded-lg text-white font-medium hover:brightness-110 focus:ring-4 ring-purple-300 dark:ring-purple-700 relative overflow-hidden group transition-all"
+                initial={{ scale: 0.9 }}
+                animate={{ scale: 1 }}
+                whileHover={{
+                  scale: 1.05,
+                  boxShadow: '0 5px 15px rgba(168,85,247,0.4)'
+                }}
+                whileTap={{ scale: 0.96 }}
+              >
+                <motion.span
+                  className="relative z-10 flex items-center"
+                  whileHover={{ x: 3 }}
+                  transition={{ type: 'spring', stiffness: 300 }}
+                >
+                  View My Work <BsArrowRight className="ml-2 h-4 w-4" />
+                </motion.span>
+                <motion.span
+                  className="absolute inset-0 bg-gradient-to-r from-purple-600 to-pink-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                />
+              </motion.a>
+
+              <motion.a
+                href="#contact"
+                className="px-6 py-3 border border-gray-300 dark:border-gray-600 rounded-lg text-gray-800 dark:text-white font-medium hover:bg-gray-100 dark:hover:bg-gray-800 focus:ring-2 ring-gray-400 dark:ring-gray-700 relative overflow-hidden group transition-all"
+                whileHover={{
+                  scale: 1.05,
+                  boxShadow: '0 5px 15px rgba(0,0,0,0.1)'
+                }}
+                whileTap={{ scale: 0.96 }}
+              >
+                <motion.span
+                  className="relative z-10 flex items-center"
+                  whileHover={{ x: 3 }}
+                  transition={{ type: 'spring', stiffness: 300 }}
+                >
+                  Contact Me <BsMailbox className="ml-2 h-4 w-4" />
+                </motion.span>
+                <motion.span
+                  className="absolute inset-0 bg-gray-100 dark:bg-gray-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                />
+              </motion.a>
+            </motion.div>
+            <motion.div
+              className="mt-2 sm:mt-4 flex flex-wrap justify-center gap-3 sm:gap-5 max-w-4xl mx-auto "
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.8, duration: 1 }}
+            >
+              {[
+                'react', 'nextjs', 'typescript', 'nodejs', 'tailwind',
+                'angular', 'python', 'docker', 'graphql', 'javascript'
+              ].map((icon, index) => (
+                <motion.div
+                  key={icon}
+                  className="relative group"
+                  initial={{ y: 10, opacity: 0, scale: 0.8 }}
+                  animate={{ y: 0, opacity: 1, scale: 1 }}
+                  transition={{
+                    delay: 0.6 + index * 0.1,
+                    duration: 0.5,
+                    type: 'spring'
+                  }}
+                  whileHover={{
+                    y: -4,
+                    scale: 1.05
+                  }}
+                >
+                  <motion.div
+                    className="w-10 h-10 sm:w-14 sm:h-14 bg-white dark:bg-gray-800 rounded-lg sm:rounded-xl flex items-center justify-center shadow-sm sm:shadow-md border border-gray-200 dark:border-gray-700 hover:shadow-purple-200 dark:hover:shadow-purple-500/30 transition-all"
+                    whileHover={{
+                      rotate: [0, 5, -5, 0],
+                      transition: {
+                        duration: 0.6
+                      }
+                    }}
+                  >
+                    <Image
+                      src={`/tech/${icon}.svg`}
+                      alt={icon}
+                      width={24}
+                      height={24}
+                      className="w-5 h-5 sm:w-7 sm:h-7 object-contain hover:scale-110 transition-transform"
+                    />
+                  </motion.div>
+                  <motion.div
+                    className="absolute -bottom-6 sm:-bottom-8 left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity bg-gray-800 text-white text-[10px] sm:text-xs font-medium px-2 py-1 rounded shadow"
+                    initial={{ scale: 0.8 }}
+                    whileInView={{ scale: 1 }}
+                  >
+                    {icon.charAt(0).toUpperCase() + icon.slice(1)}
+                    <div className="absolute -top-1 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-gray-800 rotate-45"></div>
+                  </motion.div>
+                </motion.div>
+              ))}
+            </motion.div>
+
+          </div>
+
+          {/* Enhanced Image Container */}
+          <motion.div
+            className="mt-8 md:mt-0 md:ml-12 flex-shrink-0 relative"
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.5, duration: 0.8, type: 'spring' }}
+          >
+            {/* Glow Effect */}
+            <motion.div
+              className="absolute inset-0 rounded-full bg-gradient-to-r from-purple-500/20 to-pink-600/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10"
+              animate={{
+                scale: [1, 1.1, 1],
+                opacity: [0.3, 0.5, 0.3]
+              }}
+              transition={{
+                duration: 4,
                 repeat: Infinity,
                 ease: "easeInOut"
-              }
-            }}
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M17 8l4 4m0 0l-4 4m4-4H3"
+              }}
             />
-          </motion.svg>
-        </span>
-        <motion.span
-          className="absolute inset-0 bg-gradient-to-r from-gray-100/50 to-gray-200/50 dark:from-gray-800/50 dark:to-gray-700/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10"
-          initial={{ x: '-100%' }}
-          whileInView={{ x: '100%' }}
-          transition={{ 
-            duration: 3, 
-            repeat: Infinity, 
-            ease: "linear",
-            repeatDelay: 1
-          }}
-          viewport={{ once: true }}
-        />
-      </motion.div>
-    </Link>
-  </motion.div>
 
-  {/* Floating wave elements */}
-  <motion.div
-    className="absolute -left-20 top-1/4 -z-10 opacity-30 dark:opacity-20"
-    initial={{ opacity: 0, x: -100, rotate: -15 }}
-    whileInView={{ opacity: 0.3, x: 0 }}
-    transition={{ duration: 1, delay: 0.5 }}
-    viewport={{ once: true }}
-  >
-    <svg width="300" height="300" viewBox="0 0 300 300" fill="none" className="text-purple-500">
-      <path 
-        d="M150,0 C66.8,0 0,66.8 0,150 C0,233.2 66.8,300 150,300 C233.2,300 300,233.2 300,150 C300,66.8 233.2,0 150,0 Z" 
-        fill="currentColor"
-      />
-      <motion.path
-        d="M50,150 Q100,200 150,150 T250,150"
-        stroke="white"
-        strokeWidth="2"
-        fill="none"
-        initial={{ pathLength: 0 }}
-        animate={{
-          pathLength: [0, 1, 0],
-          d: [
-            'M50,150 Q100,200 150,150 T250,150',
-            'M50,150 Q100,100 150,150 T250,150',
-            'M50,150 Q100,200 150,150 T250,150'
-          ]
-        }}
-        transition={{
-          duration: 8,
-          repeat: Infinity,
-          ease: "easeInOut"
-        }}
-      />
-    </svg>
-  </motion.div>
+            {/* Floating Border */}
+            <motion.div
+              className="absolute inset-0 rounded-full border-4 border-purple-500/30 pointer-events-none"
+              animate={{
+                scale: [1, 1.05, 1],
+                opacity: [0.5, 0.8, 0.5]
+              }}
+              transition={{
+                duration: 6,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
+            />
 
-  <motion.div
-    className="absolute -right-20 bottom-1/4 -z-10 opacity-30 dark:opacity-20"
-    initial={{ opacity: 0, x: 100, rotate: 15 }}
-    whileInView={{ opacity: 0.3, x: 0 }}
-    transition={{ duration: 1, delay: 0.7 }}
-    viewport={{ once: true }}
-  >
-    <svg width="300" height="300" viewBox="0 0 300 300" fill="none" className="text-pink-500">
-      <path 
-        d="M150,300 C233.2,300 300,233.2 300,150 C300,66.8 233.2,0 150,0 C66.8,0 0,66.8 0,150 C0,233.2 66.8,300 150,300 Z" 
-        fill="currentColor"
-      />
-      <motion.path
-        d="M50,150 Q100,100 150,150 T250,150"
-        stroke="white"
-        strokeWidth="2"
-        fill="none"
-        initial={{ pathLength: 0 }}
-        animate={{
-          pathLength: [0, 1, 0],
-          d: [
-            'M50,150 Q100,100 150,150 T250,150',
-            'M50,150 Q100,200 150,150 T250,150',
-            'M50,150 Q100,100 150,150 T250,150'
-          ]
-        }}
-        transition={{
-          duration: 10,
-          repeat: Infinity,
-          ease: "easeInOut",
-          delay: 2
-        }}
-      />
-    </svg>
-  </motion.div>
-</section>
+            {/* Main Image */}
+            <motion.div
+              className="w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 rounded-full overflow-hidden border-4 border-white dark:border-gray-800 shadow-xl relative"
+              whileHover={{
+                scale: 1.03,
+                boxShadow: '0 10px 25px -5px rgba(168, 85, 247, 0.3)'
+              }}
+            >
+              <Image
+                src="/me/shibili.png"
+                alt="Muhammed Shibili"
+                width={256}
+                height={256}
+                className="object-cover w-full h-full"
+                priority
+              />
+            </motion.div>
+
+
+
+            <motion.div
+              className="absolute -top-4 -left-4 bg-white dark:bg-gray-800 rounded-full p-2 shadow-lg border border-gray-200 dark:border-gray-700"
+              initial={{ scale: 0, rotate: 45 }}
+              animate={{ scale: 1, rotate: 0 }}
+              transition={{ delay: 0.9, type: 'spring' }}
+              whileHover={{ rotate: -15, scale: 1.1 }}
+            >
+            </motion.div>
+          </motion.div>
+        </motion.section>
+
+
+        <section id="work" className="py-28 px-4 sm:px-8 max-w-7xl mx-auto relative overflow-hidden">
+          <motion.div
+            className="absolute inset-0 -z-10 overflow-hidden pointer-events-none"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 1 }}
+            viewport={{ once: true }}
+          >
+            <motion.div
+              className="absolute top-0 left-0 right-0 h-32 w-full -translate-y-full"
+              initial={{ y: 0 }}
+              whileInView={{ y: '100%' }}
+              transition={{ duration: 1.5, ease: "easeInOut" }}
+              viewport={{ once: true }}
+            >
+              <svg
+                viewBox="0 0 1200 120"
+                preserveAspectRatio="none"
+                className="w-full h-full"
+              >
+                <path
+                  d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z"
+                  fill="url(#waveGradient)"
+                  className="opacity-70"
+                ></path>
+                <defs>
+                  <linearGradient
+                    id="waveGradient"
+                    x1="0"
+                    y1="0"
+                    x2="1200"
+                    y2="0"
+                    gradientUnits="userSpaceOnUse"
+                  >
+                    <stop offset="0%" stopColor="#8b5cf6" />
+                    <stop offset="100%" stopColor="#ec4899" />
+                  </linearGradient>
+                </defs>
+              </svg>
+            </motion.div>
+
+            {/* Animated Wave Background */}
+            <motion.div
+              className="absolute inset-0"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ delay: 1, duration: 1 }}
+              viewport={{ once: true }}
+            >
+              {/* Dynamic Wave Pattern */}
+              <motion.svg
+                className="absolute inset-0 w-full h-full opacity-10 dark:opacity-[0.05]"
+                preserveAspectRatio="none"
+                initial={{ y: 0 }}
+                animate={{ y: [0, -20, 0] }}
+                transition={{
+                  duration: 15,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+              >
+                <pattern
+                  id="wave-pattern"
+                  width="120"
+                  height="120"
+                  patternUnits="userSpaceOnUse"
+                >
+                  <path
+                    d="M0,60 Q30,90 60,60 T120,60"
+                    stroke="currentColor"
+                    strokeWidth="1"
+                    fill="none"
+                  />
+                  <path
+                    d="M0,120 Q30,90 60,120 T120,120"
+                    stroke="currentColor"
+                    strokeWidth="1"
+                    fill="none"
+                  />
+                </pattern>
+                <rect width="100%" height="100%" fill="url(#wave-pattern)" />
+              </motion.svg>
+
+              {/* Secondary Wave Pattern (offset) */}
+              <motion.svg
+                className="absolute inset-0 w-full h-full opacity-5 dark:opacity-[0.03]"
+                preserveAspectRatio="none"
+                initial={{ y: 30 }}
+                animate={{ y: [30, 10, 30] }}
+                transition={{
+                  duration: 18,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: 3
+                }}
+              >
+                <pattern
+                  id="wave-pattern-2"
+                  width="120"
+                  height="120"
+                  patternUnits="userSpaceOnUse"
+                >
+                  <path
+                    d="M0,80 Q30,110 60,80 T120,80"
+                    stroke="currentColor"
+                    strokeWidth="1"
+                    fill="none"
+                  />
+                  <path
+                    d="M0,140 Q30,110 60,140 T120,140"
+                    stroke="currentColor"
+                    strokeWidth="1"
+                    fill="none"
+                  />
+                </pattern>
+                <rect width="100%" height="100%" fill="url(#wave-pattern-2)" />
+              </motion.svg>
+            </motion.div>
+
+            {/* Floating gradient blobs */}
+            {[...Array(6)].map((_, i) => (
+              <motion.div
+                key={i}
+                className={`absolute rounded-full blur-[80px] opacity-30 ${i % 2 === 0
+                  ? 'bg-purple-500/30 dark:bg-purple-600/20'
+                  : 'bg-pink-500/30 dark:bg-pink-600/20'
+                  }`}
+                style={{
+                  width: `${100 + Math.random() * 300}px`,
+                  height: `${100 + Math.random() * 300}px`,
+                  left: `${Math.random() * 100}%`,
+                  top: `${Math.random() * 100}%`
+                }}
+                initial={{ scale: 0 }}
+                whileInView={{
+                  scale: 1,
+                  x: [0, (Math.random() - 0.5) * 200],
+                  y: [0, (Math.random() - 0.5) * 200]
+                }}
+                transition={{
+                  duration: 20 + Math.random() * 20,
+                  repeat: Infinity,
+                  repeatType: "reverse",
+                  ease: "easeInOut",
+                  delay: Math.random() * 2
+                }}
+                viewport={{ once: true }}
+              />
+            ))}
+          </motion.div>
+
+          {/* Section Heading */}
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.5 }}
+            viewport={{ once: true, margin: "-100px" }}
+            className="text-center mb-16 relative"
+          >
+            {/* Animated Underline */}
+            <motion.div
+              className="absolute -bottom-4 left-1/2 transform -translate-x-1/2 h-1 w-24"
+              initial={{ scaleX: 0 }}
+              whileInView={{ scaleX: 1 }}
+              transition={{ duration: 1, delay: 0.8, ease: "backOut" }}
+              viewport={{ once: true }}
+            >
+              <svg width="100%" height="100%" viewBox="0 0 100 10" preserveAspectRatio="none">
+                <motion.path
+                  d="M0,5 Q25,10 50,5 T100,5"
+                  stroke="url(#underlineGradient)"
+                  strokeWidth="2"
+                  fill="none"
+                  initial={{ pathLength: 0 }}
+                  animate={{
+                    pathLength: [0, 1, 0],
+                    d: [
+                      'M0,5 Q25,10 50,5 T100,5',
+                      'M0,5 Q25,0 50,5 T100,5',
+                      'M0,5 Q25,10 50,5 T100,5'
+                    ]
+                  }}
+                  transition={{
+                    duration: 4,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                  }}
+                />
+                <defs>
+                  <linearGradient id="underlineGradient" x1="0" y1="0" x2="100%" y2="0">
+                    <stop offset="0%" stopColor="#8b5cf6" />
+                    <stop offset="100%" stopColor="#ec4899" />
+                  </linearGradient>
+                </defs>
+              </svg>
+            </motion.div>
+
+            <motion.h2
+              className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white mb-4"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{
+                opacity: 1,
+                y: 0,
+                textShadow: [
+                  '0 0 0px rgba(0,0,0,0)',
+                  '0 0 10px rgba(168, 85, 247, 0.3)',
+                  '0 0 0px rgba(0,0,0,0)'
+                ]
+              }}
+              transition={{
+                duration: 0.6,
+                delay: 0.3,
+                textShadow: {
+                  duration: 3,
+                  repeat: Infinity,
+                  repeatType: 'reverse'
+                }
+              }}
+              viewport={{ once: true }}
+            >
+              Featured <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-pink-600">Projects</span>
+            </motion.h2>
+
+            <motion.p
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              viewport={{ once: true }}
+              className="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto"
+            >
+              Each project represents a unique challenge solved with innovative solutions and cutting-edge technologies.
+            </motion.p>
+          </motion.div>
+
+          {/* Projects Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {projects.slice(0, 3).map((project, index) => (
+              <motion.div
+                key={project.id}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                whileHover={{
+                  y: -10,
+                  transition: { duration: 0.3 }
+                }}
+                transition={{
+                  duration: 0.6,
+                  delay: 0.5 + index * 0.1,
+                  type: 'spring',
+                  stiffness: 100
+                }}
+                viewport={{ once: true, margin: '-50px' }}
+                className="relative group"
+              >
+                {/* Wave Glow effect on hover */}
+                <motion.div
+                  className="absolute inset-0 rounded-xl overflow-hidden opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+                  initial={{ scale: 0.9 }}
+                  whileHover={{
+                    scale: 1,
+                    background: [
+                      'radial-gradient(circle at 30% 50%, rgba(139, 92, 246, 0.1) 0%, transparent 70%)',
+                      'radial-gradient(circle at 70% 50%, rgba(236, 72, 153, 0.1) 0%, transparent 70%)'
+                    ]
+                  }}
+                  transition={{
+                    duration: 3,
+                    repeat: Infinity,
+                    repeatType: "reverse"
+                  }}
+                >
+                  <div className="absolute -inset-2 bg-gradient-to-r from-purple-500/20 to-pink-600/20 blur-lg"></div>
+                </motion.div>
+
+                <ProjectCard project={project} />
+              </motion.div>
+            ))}
+          </div>
+
+          {/* View All Button with wave animation */}
+          <motion.div
+            className="mt-16 text-center"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.8 }}
+            viewport={{ once: true }}
+          >
+            <Link href="/projects">
+              <motion.div
+                className="inline-flex items-center px-8 py-4 border border-gray-300 dark:border-gray-700 
+      rounded-lg text-gray-800 dark:text-white font-medium 
+      hover:bg-gray-100/50 dark:hover:bg-gray-800/50 transition-all group cursor-pointer relative overflow-hidden"
+                whileHover={{
+                  scale: 1.05,
+                  boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.1)'
+                }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <span className="relative z-10 flex items-center">
+                  View All Projects
+                  <motion.svg
+                    className="w-5 h-5 ml-3"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    animate={{
+                      x: [0, 5, 0],
+                      transition: {
+                        duration: 1.5,
+                        repeat: Infinity,
+                        ease: "easeInOut"
+                      }
+                    }}
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M17 8l4 4m0 0l-4 4m4-4H3"
+                    />
+                  </motion.svg>
+                </span>
+                <motion.span
+                  className="absolute inset-0 bg-gradient-to-r from-gray-100/50 to-gray-200/50 dark:from-gray-800/50 dark:to-gray-700/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10"
+                  initial={{ x: '-100%' }}
+                  whileInView={{ x: '100%' }}
+                  transition={{
+                    duration: 3,
+                    repeat: Infinity,
+                    ease: "linear",
+                    repeatDelay: 1
+                  }}
+                  viewport={{ once: true }}
+                />
+              </motion.div>
+            </Link>
+          </motion.div>
+
+          {/* Floating wave elements */}
+          <motion.div
+            className="absolute -left-20 top-1/4 -z-10 opacity-30 dark:opacity-20"
+            initial={{ opacity: 0, x: -100, rotate: -15 }}
+            whileInView={{ opacity: 0.3, x: 0 }}
+            transition={{ duration: 1, delay: 0.5 }}
+            viewport={{ once: true }}
+          >
+            <svg width="300" height="300" viewBox="0 0 300 300" fill="none" className="text-purple-500">
+              <path
+                d="M150,0 C66.8,0 0,66.8 0,150 C0,233.2 66.8,300 150,300 C233.2,300 300,233.2 300,150 C300,66.8 233.2,0 150,0 Z"
+                fill="currentColor"
+              />
+              <motion.path
+                d="M50,150 Q100,200 150,150 T250,150"
+                stroke="white"
+                strokeWidth="2"
+                fill="none"
+                initial={{ pathLength: 0 }}
+                animate={{
+                  pathLength: [0, 1, 0],
+                  d: [
+                    'M50,150 Q100,200 150,150 T250,150',
+                    'M50,150 Q100,100 150,150 T250,150',
+                    'M50,150 Q100,200 150,150 T250,150'
+                  ]
+                }}
+                transition={{
+                  duration: 8,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+              />
+            </svg>
+          </motion.div>
+
+          <motion.div
+            className="absolute -right-20 bottom-1/4 -z-10 opacity-30 dark:opacity-20"
+            initial={{ opacity: 0, x: 100, rotate: 15 }}
+            whileInView={{ opacity: 0.3, x: 0 }}
+            transition={{ duration: 1, delay: 0.7 }}
+            viewport={{ once: true }}
+          >
+            <svg width="300" height="300" viewBox="0 0 300 300" fill="none" className="text-pink-500">
+              <path
+                d="M150,300 C233.2,300 300,233.2 300,150 C300,66.8 233.2,0 150,0 C66.8,0 0,66.8 0,150 C0,233.2 66.8,300 150,300 Z"
+                fill="currentColor"
+              />
+              <motion.path
+                d="M50,150 Q100,100 150,150 T250,150"
+                stroke="white"
+                strokeWidth="2"
+                fill="none"
+                initial={{ pathLength: 0 }}
+                animate={{
+                  pathLength: [0, 1, 0],
+                  d: [
+                    'M50,150 Q100,100 150,150 T250,150',
+                    'M50,150 Q100,200 150,150 T250,150',
+                    'M50,150 Q100,100 150,150 T250,150'
+                  ]
+                }}
+                transition={{
+                  duration: 10,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: 2
+                }}
+              />
+            </svg>
+          </motion.div>
+        </section>
 
 
         <motion.section

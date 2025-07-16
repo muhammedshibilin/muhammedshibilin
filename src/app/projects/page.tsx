@@ -27,7 +27,7 @@ export default function AllProjectsPage() {
   }, []);
 
   return (
-    <section className="py-20 px-4 sm:px-8 max-w-7xl mx-auto">
+    <section className="py-20 px-4 sm:px-8 bg-white dark:bg-[#0a0a0a]">
       <motion.h1
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}

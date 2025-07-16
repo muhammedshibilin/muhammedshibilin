@@ -32,7 +32,7 @@ export default function AllProjectsPage() {
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        className="text-4xl sm:text-5xl font-extrabold text-white text-center mb-6"
+        className="text-4xl sm:text-5xl font-extrabold text-emerald-600 text-center mb-6"
       >
         All <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-cyan-500">Projects</span>
       </motion.h1>

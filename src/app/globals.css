@@ -4,6 +4,7 @@
 
 :root {
 
+  --background: #ffffff;
 
   --foreground: #171717;
 
@@ -25,16 +26,26 @@
 
 
 
-@media (prefers-color-scheme: dark) {
-
+@media (prefers-color-scheme: light) {
   :root {
-
-    --background: #0a0a0a;
-
-
+    --background: #fdfcff; /* Softer white with a bluish hue */
+    --foreground: #222222; /* Darker text for contrast */
+    --primary: #7b2cbf;     /* Vibrant purple */
+    --secondary: #ff6b6b;   /* Coral red/pink */
+    --accent: #ffd6e0;      /* Light pink accent background */
   }
 
+  body {
+    background: linear-gradient(to bottom, #fdfcff, #f1f4ff); /* soft gradient */
+    color: var(--foreground);
+  }
+
+  a,
+  button {
+    transition: all 0.3s ease;
+  }
 }
+
 
 
 
@@ -46,4 +57,15 @@ body {
 
   font-family: Arial, Helvetica, sans-serif;
 
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: radial-gradient(circle at 20% 20%, #ffe6fa 0%, transparent 50%), 
+                    radial-gradient(circle at 80% 80%, #e6f7ff 0%, transparent 50%);
+  opacity: 0.2;
+  pointer-events: none;
+  z-index: -1;
 }
